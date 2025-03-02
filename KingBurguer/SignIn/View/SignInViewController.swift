@@ -10,18 +10,22 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    let email: UITextField = {
+    lazy var email: UITextField = {
         let ed = UITextField()
         ed.backgroundColor = .blue
         ed.placeholder = "Entre com seu e-mail"
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let password: UITextField = {
+    lazy var password: UITextField = {
         let ed = UITextField()
         ed.backgroundColor = .red
         ed.placeholder = "Entre com sua senha"
+        ed.returnKeyType = .done
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
@@ -115,6 +119,18 @@ class SignInViewController: UIViewController {
     
     @objc func registerDidTap(_ sender: UIButton) {
         viewModel?.goToSignUp()
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField.returnKeyType == .done) {
+            view.endEditing(true)
+            return false
+        } else {
+            password.becomeFirstResponder()
+        }
+        return false
     }
 }
 

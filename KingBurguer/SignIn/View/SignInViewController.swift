@@ -18,7 +18,7 @@ class SignInViewController: UIViewController {
     
     let container: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -76,16 +76,9 @@ class SignInViewController: UIViewController {
         
         navigationItem.title = "Login"
         
-        var texts: [UITextField] = []
-        for i in 0..<30 {
-            let t = UITextField()
-            t.placeholder = "ola \(i)"
-            t.borderStyle = .roundedRect
-            t.translatesAutoresizingMaskIntoConstraints = false
-            container.addSubview(t)
-            texts.append(t)
-        }
-        
+        container.addSubview(email)
+        container.addSubview(password)
+        container.addSubview(register)
         container.addSubview(send)
         scroll.addSubview(container)
         view.addSubview(scroll)
@@ -109,64 +102,42 @@ class SignInViewController: UIViewController {
             container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor)
         ]
         
-        for i in 0..<texts.count {
-            if i == 0 {
-                NSLayoutConstraint.activate([
-                    texts[i].leadingAnchor.constraint(equalTo: container.leadingAnchor),
-                    texts[i].trailingAnchor.constraint(equalTo: container.trailingAnchor),
-                    texts[i].heightAnchor.constraint(equalToConstant: 50.0),
-                    texts[i].topAnchor.constraint(equalTo: container.topAnchor, constant: 10.0)
-                ])
-            } else {
-                NSLayoutConstraint.activate([
-                    texts[i].leadingAnchor.constraint(equalTo: container.leadingAnchor),
-                    texts[i].trailingAnchor.constraint(equalTo: container.trailingAnchor),
-                    texts[i].heightAnchor.constraint(equalToConstant: 50.0),
-                    texts[i].topAnchor.constraint(equalTo: texts[i-1].bottomAnchor, constant: 10.0)
-                ])
-            }
-        }
         
-//        view.addSubview(email)
-//        view.addSubview(password)
-//        view.addSubview(send)
-//        view.addSubview(register)
+        let emailConstraints = [
+            email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0),
+            email.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
         
-//        let emailConstraints = [
-//            email.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            email.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            email.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            email.heightAnchor.constraint(equalToConstant: 50.0)
-//        ]
-//        
-//        let passwordConstrains = [
-//            password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
-//            password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
-//            password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
-//            password.heightAnchor.constraint(equalToConstant: 50.0)
-//        ]
+        let passwordConstrains = [
+            password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
+            password.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
         
         let sendConstraints = [
             send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             send.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            send.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.0),
-            send.topAnchor.constraint(greaterThanOrEqualTo: texts.last!.bottomAnchor, constant: 10.0),
+//            send.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.0),
+            send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
-//        let registerConstraints = [
-//            register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
-//            register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
-//            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 15.0),
-//            register.heightAnchor.constraint(equalToConstant: 50.0)
-//        ]
+        let registerConstraints = [
+            register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 15.0),
+            register.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
         
-//        NSLayoutConstraint.activate(emailConstraints)
-//        NSLayoutConstraint.activate(passwordConstrains)
+        NSLayoutConstraint.activate(emailConstraints)
+        NSLayoutConstraint.activate(passwordConstrains)
         NSLayoutConstraint.activate(sendConstraints)
         NSLayoutConstraint.activate(scrollConstraints)
         NSLayoutConstraint.activate(containerConstraints)
-//        NSLayoutConstraint.activate(registerConstraints)
+        NSLayoutConstraint.activate(registerConstraints)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)

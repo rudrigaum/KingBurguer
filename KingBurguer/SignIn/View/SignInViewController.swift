@@ -18,14 +18,13 @@ class SignInViewController: UIViewController {
     
     let container: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var email: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .blue
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
         ed.delegate = self
@@ -35,7 +34,7 @@ class SignInViewController: UIViewController {
     
     lazy var password: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .red
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
         ed.returnKeyType = .done
         ed.delegate = self
@@ -43,21 +42,18 @@ class SignInViewController: UIViewController {
         return ed
     }()
     
-    lazy var send: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Entrar", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .white
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
+    lazy var send: LoadingButton = {
+        let btn = LoadingButton()
+        btn.title = "Entrar"
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
     
     lazy var register: UIButton = {
         let btn = UIButton()
         btn.setTitle("Criar Conta", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = .purple
+        btn.setTitleColor(.black, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         return btn
@@ -201,7 +197,7 @@ extension SignInViewController: SignInViewModelDelegate {
         case .none:
             break
         case .loading:
-            // mostrar a progress
+            send.startLoading(true)
             break
         case .goToHome:
             viewModel?.goToHome()

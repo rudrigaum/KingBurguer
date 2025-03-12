@@ -17,6 +17,7 @@
 		185323762C8C71FC00121CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185323752C8C71FC00121CB9 /* SceneDelegate.swift */; };
 		1853237D2C8C71FD00121CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1853237C2C8C71FD00121CB9 /* Assets.xcassets */; };
 		185323802C8C71FD00121CB9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1853237F2C8C71FD00121CB9 /* Base */; };
+		185B58672D7F2217006ED3BE /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B58662D7F2216006ED3BE /* LoadingButton.swift */; };
 		189494EB2D3534A0000D0BFB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189494EA2D3534A0000D0BFB /* SignUpViewController.swift */; };
 		18B0FF982D411B0F0000289C /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0FF972D411B0F0000289C /* SignUpCoordinator.swift */; };
 		18BAC9242D22D51100D060AC /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC9232D22D51000D060AC /* SignInState.swift */; };
@@ -37,6 +38,7 @@
 		1853237C2C8C71FD00121CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1853237F2C8C71FD00121CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185323812C8C71FD00121CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185B58662D7F2216006ED3BE /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		189494EA2D3534A0000D0BFB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18B0FF972D411B0F0000289C /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		18BAC9232D22D51000D060AC /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		185323722C8C71FC00121CB9 /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
+				185B58642D7F21CA006ED3BE /* Common */,
 				1820AC102D4CEABB00003D41 /* Home */,
 				189494E82D353422000D0BFB /* SignUp */,
 				180CCD952CA2B1CB001B85F6 /* SignIn */,
@@ -137,6 +140,22 @@
 				185323812C8C71FD00121CB9 /* Info.plist */,
 			);
 			path = KingBurguer;
+			sourceTree = "<group>";
+		};
+		185B58642D7F21CA006ED3BE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				185B58652D7F21D6006ED3BE /* View */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		185B58652D7F21D6006ED3BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				185B58662D7F2216006ED3BE /* LoadingButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		189494E82D353422000D0BFB /* SignUp */ = {
@@ -245,6 +264,7 @@
 				18C9DF7F2D3E4F6D00CD484F /* SignInCoordinator.swift in Sources */,
 				1820AC0F2D4CE68100003D41 /* SignUpState.swift in Sources */,
 				1820AC182D4CEB9C00003D41 /* HomeViewModel.swift in Sources */,
+				185B58672D7F2217006ED3BE /* LoadingButton.swift in Sources */,
 				185323762C8C71FC00121CB9 /* SceneDelegate.swift in Sources */,
 				18BAC9242D22D51100D060AC /* SignInState.swift in Sources */,
 				1820AC122D4CEAD800003D41 /* HomeCoordinator.swift in Sources */,

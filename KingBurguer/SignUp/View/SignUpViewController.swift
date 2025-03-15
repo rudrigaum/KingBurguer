@@ -10,52 +10,78 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    let name: UITextField = {
+    let scroll: UIScrollView = {
+       let sc = UIScrollView()
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
+    let container: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var name: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu nome"
+        ed.tag = 1
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let email: UITextField = {
+    lazy var email: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
+        ed.tag = 2
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let password: UITextField = {
+    lazy var password: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
+        ed.tag = 3
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let document: UITextField = {
+    lazy var document: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu CPF"
+        ed.tag = 4
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let birthday: UITextField = {
+    lazy var birthday: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua data de nascimento"
+        ed.tag = 5
+        ed.returnKeyType = .done
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    lazy var send: LoadingButton = {
+    lazy var register: LoadingButton = {
         let btn = LoadingButton()
         btn.title = "Entrar"
         btn.titleColor = .white
         btn.backgroundColor = .red
-        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
@@ -70,17 +96,41 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        view.addSubview(name)
-        view.addSubview(email)
-        view.addSubview(password)
-        view.addSubview(document)
-        view.addSubview(birthday)
-        view.addSubview(send)
+        container.addSubview(name)
+        container.addSubview(email)
+        container.addSubview(password)
+        container.addSubview(document)
+        container.addSubview(birthday)
+        container.addSubview(register)
+        
+        scroll.addSubview(container)
+        view.addSubview(scroll)
+        
+        let scrollConstraints = [
+            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo: view.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ]
+        
+        let heightConstraint = container.heightAnchor.constraint(equalTo: view.heightAnchor)
+        heightConstraint.priority = .defaultLow
+        heightConstraint.isActive = true
+        
+        let containerConstraints = [
+            container.widthAnchor.constraint(equalTo: view.widthAnchor),
+            container.topAnchor.constraint(equalTo: scroll.topAnchor),
+            container.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            container.heightAnchor.constraint(equalToConstant: 470)
+        ]
+        
         
         let nameConstraints = [
             name.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             name.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            name.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
+            name.topAnchor.constraint(equalTo: container.topAnchor, constant: 30),
             name.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
@@ -112,11 +162,11 @@ class SignUpViewController: UIViewController {
             birthday.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
-        let sendConstrains = [
-            send.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            send.trailingAnchor.constraint(equalTo: name.trailingAnchor),
-            send.topAnchor.constraint(equalTo: birthday.bottomAnchor, constant: 10.0),
-            send.heightAnchor.constraint(equalToConstant: 50.0)
+        let registerConstraints = [
+            register.leadingAnchor.constraint(equalTo: name.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: name.trailingAnchor),
+            register.topAnchor.constraint(equalTo: birthday.bottomAnchor, constant: 10.0),
+            register.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
         NSLayoutConstraint.activate(nameConstraints)
@@ -124,9 +174,46 @@ class SignUpViewController: UIViewController {
         NSLayoutConstraint.activate(passwordConstrains)
         NSLayoutConstraint.activate(documentConstrains)
         NSLayoutConstraint.activate(birthdayConstrains)
-        NSLayoutConstraint.activate(sendConstrains)
+        NSLayoutConstraint.activate(registerConstraints)
+        
+        NSLayoutConstraint.activate(containerConstraints)
+        NSLayoutConstraint.activate(scrollConstraints)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         
     }
+    
+    @objc func onKeyboardNotification(_ notification: Notification) {
+        let visible = notification.name == UIResponder.keyboardWillShowNotification
+        let keyboardframe = visible ? UIResponder.keyboardFrameEndUserInfoKey : UIResponder.keyboardFrameBeginUserInfoKey
+        
+        if let keyboardSize = (notification.userInfo?[keyboardframe] as? NSValue)?.cgRectValue{
+            onkeyboardChanged(visible, height: keyboardSize.height)
+        }
+    }
+    
+    func onkeyboardChanged(_ visible: Bool, height: CGFloat) {
+        if (!visible) {
+            scroll.contentInset = .zero
+            scroll.scrollIndicatorInsets = .zero
+        } else {
+            let contentsInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
+            scroll.contentInset = contentsInsets
+            scroll.scrollIndicatorInsets = contentsInsets
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(_ view: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+
     
     @objc func sendDidTap(_ sender: UIButton) {
          viewModel?.send()
@@ -150,5 +237,36 @@ extension SignUpViewController: SignUpViewModelDelegate {
             self.present(alert, animated: true)
             break
         }
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField.returnKeyType == .done) {
+            view.endEditing(true)
+            print("Save!!!")
+            return false
+        }
+        let nextTag = textField.tag + 1
+        let component = container.findViewByTag(tag: nextTag)
+        
+        if (component != nil) {
+            component?.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
+        
+        return false
+    }
+}
+
+extension UIView {
+    func findViewByTag(tag: Int) -> UIView? {
+        for subview in subviews {
+            if subview.tag == tag {
+                return subview
+            }
+        }
+        return nil
     }
 }

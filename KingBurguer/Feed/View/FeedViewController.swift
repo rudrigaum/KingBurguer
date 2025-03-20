@@ -12,7 +12,7 @@ class FeedViewController: UIViewController {
     private let feedTableView: UITableView = {
        let tableView = UITableView()
         tableView.backgroundColor = .cyan
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         return tableView
     }()
 
@@ -36,9 +36,11 @@ extension FeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.textLabel?.text = "Olá Mundo \(indexPath.row)"
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as? FeedTableViewCell {
+            cell.textLabel?.text = "Olá Mundo \(indexPath.row)"
+            return cell
+        }
+        return UITableViewCell()
     }
     
     

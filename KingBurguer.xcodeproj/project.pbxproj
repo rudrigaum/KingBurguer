@@ -21,6 +21,7 @@
 		186C5D282D89A3D7008646C1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C5D272D89A3D7008646C1 /* FeedViewController.swift */; };
 		186C5D2A2D89A544008646C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C5D292D89A544008646C1 /* ProfileViewController.swift */; };
 		186C5D2C2D89A55E008646C1 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C5D2B2D89A55E008646C1 /* CouponViewController.swift */; };
+		1873E8912D8C52A1009BADC2 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873E8902D8C52A1009BADC2 /* FeedTableViewCell.swift */; };
 		189494EB2D3534A0000D0BFB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189494EA2D3534A0000D0BFB /* SignUpViewController.swift */; };
 		18B0FF982D411B0F0000289C /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0FF972D411B0F0000289C /* SignUpCoordinator.swift */; };
 		18BAC9242D22D51100D060AC /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BAC9232D22D51000D060AC /* SignInState.swift */; };
@@ -45,6 +46,7 @@
 		186C5D272D89A3D7008646C1 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		186C5D292D89A544008646C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		186C5D2B2D89A55E008646C1 /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
+		1873E8902D8C52A1009BADC2 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		189494EA2D3534A0000D0BFB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18B0FF972D411B0F0000289C /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		18BAC9232D22D51000D060AC /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				186C5D272D89A3D7008646C1 /* FeedViewController.swift */,
+				1873E8902D8C52A1009BADC2 /* FeedTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				1820AC0D2D4CE5E100003D41 /* SignUpViewModel.swift in Sources */,
 				18B0FF982D411B0F0000289C /* SignUpCoordinator.swift in Sources */,
 				186C5D2C2D89A55E008646C1 /* CouponViewController.swift in Sources */,
+				1873E8912D8C52A1009BADC2 /* FeedTableViewCell.swift in Sources */,
 				186C5D2A2D89A544008646C1 /* ProfileViewController.swift in Sources */,
 				18C9DF7F2D3E4F6D00CD484F /* SignInCoordinator.swift in Sources */,
 				186C5D282D89A3D7008646C1 /* FeedViewController.swift in Sources */,

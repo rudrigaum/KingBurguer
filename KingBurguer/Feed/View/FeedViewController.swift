@@ -10,7 +10,7 @@ import UIKit
 class FeedViewController: UIViewController {
     
     private let feedTableView: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .cyan
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         return tableView
@@ -21,6 +21,7 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(feedTableView)
+        feedTableView.delegate = self
         feedTableView.dataSource = self
     }
     
@@ -30,14 +31,23 @@ class FeedViewController: UIViewController {
     }
 }
 
-extension FeedViewController: UITableViewDataSource {
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 20
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as? FeedTableViewCell {
-            cell.textLabel?.text = "Olá Mundo \(indexPath.row)"
+            cell.textLabel?.text = "Olá Mundo \(indexPath.section) - \(indexPath.row)"
             return cell
         }
         return UITableViewCell()

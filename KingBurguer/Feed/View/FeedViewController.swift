@@ -21,6 +21,11 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(feedTableView)
+        
+        let headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width , height: 200))
+        feedTableView.tableHeaderView = headerView
+        headerView.backgroundColor = .orange
+        
         feedTableView.delegate = self
         feedTableView.dataSource = self
     }

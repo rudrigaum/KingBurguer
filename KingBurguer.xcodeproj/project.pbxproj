@@ -13,6 +13,7 @@
 		1820AC122D4CEAD800003D41 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820AC112D4CEAD800003D41 /* HomeCoordinator.swift */; };
 		1820AC152D4CEB1800003D41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820AC142D4CEB1800003D41 /* HomeViewController.swift */; };
 		1820AC182D4CEB9C00003D41 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820AC172D4CEB9C00003D41 /* HomeViewModel.swift */; };
+		1839030A2D92E08B00A15740 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183903092D92E08B00A15740 /* HighlightView.swift */; };
 		185323742C8C71FC00121CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185323732C8C71FC00121CB9 /* AppDelegate.swift */; };
 		185323762C8C71FC00121CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185323752C8C71FC00121CB9 /* SceneDelegate.swift */; };
 		1853237D2C8C71FD00121CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1853237C2C8C71FD00121CB9 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		1820AC112D4CEAD800003D41 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		1820AC142D4CEB1800003D41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1820AC172D4CEB9C00003D41 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		183903092D92E08B00A15740 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
 		185323702C8C71FC00121CB9 /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185323732C8C71FC00121CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185323752C8C71FC00121CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				186C5D272D89A3D7008646C1 /* FeedViewController.swift */,
 				1873E8902D8C52A1009BADC2 /* FeedTableViewCell.swift */,
+				183903092D92E08B00A15740 /* HighlightView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				189494EB2D3534A0000D0BFB /* SignUpViewController.swift in Sources */,
+				1839030A2D92E08B00A15740 /* HighlightView.swift in Sources */,
 				18F289272CDCE783009E169E /* SignInViewModel.swift in Sources */,
 				180CCD982CA2B206001B85F6 /* SignInViewController.swift in Sources */,
 				185323742C8C71FC00121CB9 /* AppDelegate.swift in Sources */,

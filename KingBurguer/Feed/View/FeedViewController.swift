@@ -11,7 +11,7 @@ class FeedViewController: UIViewController {
     
     private let feedTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .cyan
+        tableView.backgroundColor = .systemBackground
         tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         return tableView
     }()
@@ -28,11 +28,17 @@ class FeedViewController: UIViewController {
         
         feedTableView.delegate = self
         feedTableView.dataSource = self
+        
+        configureNavBar()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         feedTableView.frame = view.bounds
+    }
+    
+    private func configureNavBar() {
+        navigationItem.title = "Produtcs"
     }
 }
 

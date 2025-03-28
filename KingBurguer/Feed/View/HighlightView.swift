@@ -18,7 +18,7 @@ class HighlightView: UIView {
     
     private let moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Resgatar Cupom", for: .normal)
+        button.setTitle("Redeem Coupon", for: .normal)
         button.layer.borderColor = UIColor.systemBackground.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5

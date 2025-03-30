@@ -75,7 +75,6 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as? FeedTableViewCell {
-            cell.textLabel?.text = "Olá Mundo \(indexPath.section) - \(indexPath.row)"
             return cell
         }
         return UITableViewCell()

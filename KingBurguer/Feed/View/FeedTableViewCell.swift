@@ -16,8 +16,7 @@ class FeedTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 140, height: 180)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .systemBlue
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: FeedCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -45,9 +44,17 @@ extension FeedTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        
-        cell.backgroundColor = .red
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell.identifier, for: indexPath) as? FeedCollectionViewCell {
+            
+            if (indexPath.row % 2 == 0) {
+                cell.imageView.image = UIImage(named: "beefBurger")
+            } else {
+                cell.imageView.image = UIImage(named: "logo")
+            }
+            
+            cell.backgroundColor = .red
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }

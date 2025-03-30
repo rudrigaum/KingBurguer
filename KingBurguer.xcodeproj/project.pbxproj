@@ -19,6 +19,7 @@
 		1853237D2C8C71FD00121CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1853237C2C8C71FD00121CB9 /* Assets.xcassets */; };
 		185323802C8C71FD00121CB9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1853237F2C8C71FD00121CB9 /* Base */; };
 		185B58672D7F2217006ED3BE /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B58662D7F2216006ED3BE /* LoadingButton.swift */; };
+		18640A262D995FDA00C48E83 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18640A252D995FDA00C48E83 /* FeedCollectionViewCell.swift */; };
 		186C5D282D89A3D7008646C1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C5D272D89A3D7008646C1 /* FeedViewController.swift */; };
 		186C5D2A2D89A544008646C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C5D292D89A544008646C1 /* ProfileViewController.swift */; };
 		186C5D2C2D89A55E008646C1 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C5D2B2D89A55E008646C1 /* CouponViewController.swift */; };
@@ -45,6 +46,7 @@
 		1853237F2C8C71FD00121CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185323812C8C71FD00121CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185B58662D7F2216006ED3BE /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		18640A252D995FDA00C48E83 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		186C5D272D89A3D7008646C1 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		186C5D292D89A544008646C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		186C5D2B2D89A55E008646C1 /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				186C5D272D89A3D7008646C1 /* FeedViewController.swift */,
 				1873E8902D8C52A1009BADC2 /* FeedTableViewCell.swift */,
 				183903092D92E08B00A15740 /* HighlightView.swift */,
+				18640A252D995FDA00C48E83 /* FeedCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				189494EB2D3534A0000D0BFB /* SignUpViewController.swift in Sources */,
 				1839030A2D92E08B00A15740 /* HighlightView.swift in Sources */,
+				18640A262D995FDA00C48E83 /* FeedCollectionViewCell.swift in Sources */,
 				18F289272CDCE783009E169E /* SignInViewModel.swift in Sources */,
 				180CCD982CA2B206001B85F6 /* SignInViewController.swift in Sources */,
 				185323742C8C71FC00121CB9 /* AppDelegate.swift in Sources */,

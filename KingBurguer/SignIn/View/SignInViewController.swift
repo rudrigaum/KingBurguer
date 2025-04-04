@@ -22,14 +22,14 @@ class SignInViewController: UIViewController {
         return view
     }()
     
-    lazy var email: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
-        ed.placeholder = "Entre com seu e-mail"
-        ed.returnKeyType = .next
-        ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
-        return ed
+    lazy var emailTextField: TextField = {
+        let emailTextField = TextField()
+        emailTextField.placeholder = "Entre com seu e-mail"
+        emailTextField.returnKeyType
+        emailTextField.error = "E-mail invalido"
+//        ed.delegate = self
+//        ed.translatesAutoresizingMaskIntoConstraints = false
+        return emailTextField
     }()
     
     lazy var password: UITextField = {
@@ -72,7 +72,7 @@ class SignInViewController: UIViewController {
         
         navigationItem.title = "Login"
         
-        container.addSubview(email)
+        container.addSubview(emailTextField)
         container.addSubview(password)
         container.addSubview(register)
         container.addSubview(send)
@@ -101,16 +101,15 @@ class SignInViewController: UIViewController {
         
         
         let emailConstraints = [
-            email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0),
-            email.heightAnchor.constraint(equalToConstant: 50.0)
+            emailTextField.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
+            emailTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10),
+            emailTextField.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0),
         ]
         
         let passwordConstrains = [
-            password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
-            password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
-            password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
+            password.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            password.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            password.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10.0),
             password.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
@@ -123,8 +122,8 @@ class SignInViewController: UIViewController {
         ]
         
         let registerConstraints = [
-            register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
-            register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            register.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 15.0),
             register.heightAnchor.constraint(equalToConstant: 50.0)
         ]

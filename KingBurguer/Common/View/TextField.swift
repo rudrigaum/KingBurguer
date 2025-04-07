@@ -43,6 +43,14 @@ class TextField: UIView {
         }
     }
     
+    var text: String? {
+        get {
+            return editText.text
+        }
+    }
+    
+    var failure: ( () -> Bool)?
+    
     var heightConstraint : NSLayoutConstraint!
     
     override init(frame: CGRect) {
@@ -78,8 +86,10 @@ class TextField: UIView {
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField) {
-        if let text = textField.text {
-            if text.count <= 3 {
+        guard let failure = failure else { return }
+        
+        if let error = error {
+            if failure() {
                 errorLabel.text = error
                 heightConstraint.constant = 70
             } else {

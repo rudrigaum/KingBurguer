@@ -27,10 +27,16 @@ class SignInViewController: UIViewController {
         emailTextField.placeholder = "Entre com seu e-mail"
         emailTextField.returnKeyType
         emailTextField.error = "E-mail invalido"
+        emailTextField.failure = validation
 //        ed.delegate = self
 //        ed.translatesAutoresizingMaskIntoConstraints = false
         return emailTextField
     }()
+    
+    func validation() -> Bool {
+        guard let text = emailTextField.text else { return true }
+        return text.count <= 3
+    }
     
     lazy var password: UITextField = {
         let ed = UITextField()

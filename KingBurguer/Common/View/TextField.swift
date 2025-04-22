@@ -31,6 +31,12 @@ class TextField: UIView {
         }
     }
     
+    var delegate: UITextFieldDelegate? {
+        willSet {
+            editText.delegate = newValue
+        }
+    }
+    
     var returnKeyType: UIReturnKeyType = .next {
         willSet {
             editText.returnKeyType = newValue
@@ -46,6 +52,13 @@ class TextField: UIView {
     var text: String? {
         get {
             return editText.text
+        }
+    }
+    
+    override var tag: Int {
+        willSet {
+            super.tag = newValue
+            editText.tag = newValue
         }
     }
     
@@ -83,6 +96,10 @@ class TextField: UIView {
         super.layoutSubviews()
         
       
+    }
+    
+    func gainFocus() {
+        editText.becomeFirstResponder()
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField) {

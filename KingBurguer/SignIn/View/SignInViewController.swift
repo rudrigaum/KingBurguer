@@ -27,10 +27,12 @@ class SignInViewController: UIViewController {
         textField.placeholder = "Entre com seu e-mail"
         textField.returnKeyType
         textField.error = "E-mail invalido"
-        textField.failure = validation
-        textField.delegate = self 
-//        ed.delegate = self
-//        ed.translatesAutoresizingMaskIntoConstraints = false
+        textField.keyboardType = .emailAddress
+        textField.delegate = self
+        textField.failure = {
+            return !(textField.text?.isEmail() ?? false)
+        }
+        textField.delegate = self
         return textField
     }()
     

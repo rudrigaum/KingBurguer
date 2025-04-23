@@ -40,6 +40,12 @@ class TextField: UIView {
         }
     }
     
+    var secureTextEntry: Bool = false {
+        willSet {
+            editText.isSecureTextEntry = newValue
+        }
+    }
+    
     var delegate: UITextFieldDelegate? {
         willSet {
             editText.delegate = newValue

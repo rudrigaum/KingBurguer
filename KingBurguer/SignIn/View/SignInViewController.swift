@@ -46,6 +46,7 @@ class SignInViewController: UIViewController {
         textField.placeholder = "Entre com sua senha"
         textField.returnKeyType = .done
         textField.error = "Senha deve ter no mínimo 8 caracteres"
+        textField.secureTextEntry = true
         textField.failure = {
             return (textField.text?.count ?? 0) <= 8
         }

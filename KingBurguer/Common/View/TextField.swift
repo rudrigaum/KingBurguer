@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol TextFieldDelegate: UITextFieldDelegate {
+    func textFieldDidChanged(isValid: Bool)
+}
+
 class TextField: UIView {
     
     lazy var editText: UITextField = {
@@ -46,7 +50,7 @@ class TextField: UIView {
         }
     }
     
-    var delegate: UITextFieldDelegate? {
+    var delegate: TextFieldDelegate? {
         willSet {
             editText.delegate = newValue
         }
@@ -124,9 +128,11 @@ class TextField: UIView {
             if failure() {
                 errorLabel.text = error
                 heightConstraint.constant = 70
+                delegate?.textFieldDidChanged(isValid: false)
             } else {
                 errorLabel.text = ""
                 heightConstraint.constant = 50
+                delegate?.textFieldDidChanged(isValid: true)
             }
         }
         layoutIfNeeded()

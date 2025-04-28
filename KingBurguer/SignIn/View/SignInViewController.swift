@@ -190,7 +190,7 @@ class SignInViewController: UIViewController {
     }
 }
 
-extension SignInViewController: UITextFieldDelegate {
+extension SignInViewController: TextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField.returnKeyType == .done) {
             view.endEditing(true)
@@ -199,6 +199,10 @@ extension SignInViewController: UITextFieldDelegate {
             password.gainFocus()
         }
         return false
+        }
+    
+    func textFieldDidChanged(isValid: Bool) {
+        print("Campo válido: \(isValid)")
     }
 }
 

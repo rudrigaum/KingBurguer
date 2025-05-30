@@ -107,6 +107,8 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    var bitmaskResult: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -269,7 +271,7 @@ extension SignUpViewController: TextFieldDelegate {
         return false
     }
     
-    func textFieldDidChanged(isValid: Bool) {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
 
     }
 }

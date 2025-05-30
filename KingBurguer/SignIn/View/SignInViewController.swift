@@ -28,6 +28,7 @@ class SignInViewController: UIViewController {
         textField.returnKeyType
         textField.error = "E-mail invalido"
         textField.keyboardType = .emailAddress
+        textField.bitmask = 1
         textField.delegate = self
         textField.failure = {
             return !(textField.text?.isEmail() ?? false)
@@ -47,11 +48,11 @@ class SignInViewController: UIViewController {
         textField.returnKeyType = .done
         textField.error = "Senha deve ter no mínimo 8 caracteres"
         textField.secureTextEntry = true
+        textField.bitmask = 2 
         textField.failure = {
-            return (textField.text?.count ?? 0) <= 8
+            return (textField.text?.count ?? 0) < 8
         }
         textField.delegate = self
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
@@ -77,6 +78,8 @@ class SignInViewController: UIViewController {
             viewModel?.delegate = self 
         }
     }
+    
+    var bitmaskResult: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +114,6 @@ class SignInViewController: UIViewController {
             container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
             container.heightAnchor.constraint(equalToConstant: 470)
         ]
-        
         
         let emailConstraints = [
             emailTextField.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
@@ -161,7 +163,7 @@ class SignInViewController: UIViewController {
     }
     
     func onkeyboardChanged(_ visible: Bool, height: CGFloat) {
-        if (!visible) {
+        if !(visible) {
             scroll.contentInset = .zero
             scroll.scrollIndicatorInsets = .zero
         } else {
@@ -201,8 +203,15 @@ extension SignInViewController: TextFieldDelegate {
         return false
         }
     
-    func textFieldDidChanged(isValid: Bool) {
-        print("Campo válido: \(isValid)")
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+            print("bitmaskResult is : \(self.bitmaskResult)")
+            
+            if self.bitmaskResult == 3 {
+                print("Botão ativado")
+            }
+        }
     }
 }
 

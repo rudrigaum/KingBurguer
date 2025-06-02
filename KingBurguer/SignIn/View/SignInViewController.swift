@@ -28,7 +28,7 @@ class SignInViewController: UIViewController {
         textField.returnKeyType
         textField.error = "E-mail invalido"
         textField.keyboardType = .emailAddress
-        textField.bitmask = 1
+        textField.bitmask = SignInForm.email.rawValue
         textField.delegate = self
         textField.failure = {
             return !(textField.text?.isEmail() ?? false)
@@ -48,7 +48,7 @@ class SignInViewController: UIViewController {
         textField.returnKeyType = .done
         textField.error = "Senha deve ter no mínimo 8 caracteres"
         textField.secureTextEntry = true
-        textField.bitmask = 2 
+        textField.bitmask = SignInForm.password.rawValue
         textField.failure = {
             return (textField.text?.count ?? 0) < 8
         }
@@ -60,6 +60,7 @@ class SignInViewController: UIViewController {
         let btn = LoadingButton()
         btn.title = "Entrar"
         btn.backgroundColor = .red
+        btn.enable(false)
         btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
@@ -69,6 +70,7 @@ class SignInViewController: UIViewController {
         btn.setTitle("Criar Conta", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.isEnabled = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         return btn
     }()
@@ -207,11 +209,17 @@ extension SignInViewController: TextFieldDelegate {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
             print("bitmaskResult is : \(self.bitmaskResult)")
-            
-            if self.bitmaskResult == 3 {
-                print("Botão ativado")
-            }
+        } else {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
         }
+        
+        self.send.enable((SignInForm.email.rawValue & self.bitmaskResult != 0 ) && (SignInForm.password.rawValue & self.bitmaskResult != 0))
+        
+//        if (1 & self.bitmaskResult != 0 ) && (2 & self.bitmaskResult != 0) {
+//            print("Botão ativado!")
+//        } else {
+//            print("Botão desativado!")
+//        }
     }
 }
 

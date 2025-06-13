@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Entre com seu nome"
         textField.tag = 1
+        textField.bitmask = SignUpForm.name.rawValue
         textField.returnKeyType = .next
         textField.delegate = self
         textField.error = "Nome deve ter no mínimo 3 caracteres"
@@ -40,11 +41,13 @@ class SignUpViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Entre com seu e-mail"
         textField.tag = 2
+        textField.bitmask =  SignUpForm.email.rawValue
         textField.returnKeyType = .next
+        textField.keyboardType = .emailAddress
         textField.delegate = self
         textField.error = "E-mail inválido"
         textField.failure = {
-            return (textField.text?.count ?? 0) <= 3
+            return !(textField.text?.isEmail() ?? false)
         }
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -54,7 +57,9 @@ class SignUpViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Entre com sua senha"
         textField.tag = 3
+        textField.bitmask = SignUpForm.password.rawValue
         textField.returnKeyType = .next
+        textField.secureTextEntry = true
         textField.delegate = self
         textField.error = "Nome deve ter no mínimo 8 caracteres"
         textField.failure = {
@@ -68,6 +73,7 @@ class SignUpViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Entre com seu CPF"
         textField.tag = 4
+        textField.bitmask = SignUpForm.document.rawValue
         textField.returnKeyType = .next
         textField.delegate = self
         textField.error = "CPF deve ter no mínimo 11 digitos"
@@ -82,6 +88,7 @@ class SignUpViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Entre com sua data de nascimento"
         textField.tag = 5
+        textField.bitmask = SignUpForm.birthday.rawValue
         textField.returnKeyType = .done
         textField.delegate = self
         textField.error = "Data de nascimento deve ser no formato dd/MM/yyyy"
@@ -96,6 +103,7 @@ class SignUpViewController: UIViewController {
         let btn = LoadingButton()
         btn.title = "Entrar"
         btn.titleColor = .white
+        btn.enable(false)
         btn.backgroundColor = .red
         btn.addTarget(self, action: #selector(sendDidTap))
         return btn
@@ -272,7 +280,19 @@ extension SignUpViewController: TextFieldDelegate {
     }
     
     func textFieldDidChanged(isValid: Bool, bitmask: Int) {
-
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+        } else {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
+        }
+        
+        self.register.enable(
+            (SignUpForm.name.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.email.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.password.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.document.rawValue & self.bitmaskResult != 0) &&
+            (SignUpForm.birthday.rawValue & self.bitmaskResult != 0)
+        )
     }
 }
 

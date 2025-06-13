@@ -70,7 +70,6 @@ class SignInViewController: UIViewController {
         btn.setTitle("Criar Conta", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.isEnabled = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         return btn
     }()
@@ -130,8 +129,8 @@ class SignInViewController: UIViewController {
         ]
         
         let sendConstraints = [
-            send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            send.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            send.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            send.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
 //            send.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.0),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0)
@@ -214,12 +213,6 @@ extension SignInViewController: TextFieldDelegate {
         }
         
         self.send.enable((SignInForm.email.rawValue & self.bitmaskResult != 0 ) && (SignInForm.password.rawValue & self.bitmaskResult != 0))
-        
-//        if (1 & self.bitmaskResult != 0 ) && (2 & self.bitmaskResult != 0) {
-//            print("Botão ativado!")
-//        } else {
-//            print("Botão desativado!")
-//        }
     }
 }
 

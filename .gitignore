@@ -1,29 +1,32 @@
 # Xcode
+.DS_Store
+*.xcodeproj
+xcuserdata/
 build/
-DerivedData/
-*.xcuserdata/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
 *.xcuserstate
-*.xcodeproj/project.xcworkspace/xcuserdata
-
-# SwiftPM
-.swiftpm/
-.build/
+profile/
+*.xcappdata
 
 # CocoaPods
 Pods/
+!Podfile.lock
+!Manifest.lock
 
 # Carthage
 Carthage/
 
-# Fastlane
-fastlane/report.xml
-fastlane/screenshots
-fastlane/test_output
+# Swift Package Manager
+.build/
 
-# Arquivos do sistema
-.DS_Store
-*.log
+# DerivedData
+DerivedData/
 
-# Arquivos temporários
-*.swp
-*.lock
+# Misc
+*.mobileprovision
+*.xcarchive
+*.ipa
+*.dSYM.zip
+*.app.dSYM

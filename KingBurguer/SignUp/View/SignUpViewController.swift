@@ -264,7 +264,6 @@ extension SignUpViewController: TextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField.returnKeyType == .done) {
             view.endEditing(true)
-            print("Save!!!")
             return false
         }
         let nextTag = textField.tag + 1

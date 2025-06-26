@@ -207,7 +207,6 @@ extension SignInViewController: TextFieldDelegate {
     func textFieldDidChanged(isValid: Bool, bitmask: Int) {
         if isValid {
             self.bitmaskResult = self.bitmaskResult | bitmask
-            print("bitmaskResult is : \(self.bitmaskResult)")
         } else {
             self.bitmaskResult = self.bitmaskResult & ~bitmask
         }
